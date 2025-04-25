@@ -1,0 +1,94 @@
+{% extends 'accounts/admin/base_admin.html' %}
+
+{% block title %}Создание пользователя | Админ-панель | Volida{% endblock %}
+
+{% block admin_content %}
+<div class="admin-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="margin: 0;">Создание нового пользователя</h2>
+        <a href="{% url 'user_list' %}" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Назад к списку
+        </a>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">{{ form.username.label }} *</label>
+            {{ form.username }}
+            {% if form.username.help_text %}
+                <small style="color: #6c757d;">{{ form.username.help_text }}</small>
+            {% endif %}
+            {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                    <div style="color: red; font-size: 0.875em; margin-top: 5px;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }} *</label>
+            {{ form.password1 }}
+            {% if form.password1.help_text %}
+                <small style="color: #6c757d;">{{ form.password1.help_text }}</small>
+            {% endif %}
+            {% if form.password1.errors %}
+                {% for error in form.password1.errors %}
+                    <div style="color: red; font-size: 0.875em; margin-top: 5px;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }} *</label>
+            {{ form.password2 }}
+            {% if form.password2.help_text %}
+                <small style="color: #6c757d;">{{ form.password2.help_text }}</small>
+            {% endif %}
+            {% if form.password2.errors %}
+                {% for error in form.password2.errors %}
+                    <div style="color: red; font-size: 0.875em; margin-top: 5px;">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.is_staff.id_for_label }}">{{ form.is_staff.label }}</label>
+            {{ form.is_staff }}
+            {% if form.is_staff.help_text %}
+                <small style="color: #6c757d;">{{ form.is_staff.help_text }}</small>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label>Дополнительная информация (необязательно)</label>
+            <div style="border: 1px solid #ced4da; border-radius: 4px; padding: 15px; background-color: #f8f9fa;">
+                <div class="form-group">
+                    <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                </div>
+                
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Создать пользователя
+            </button>
+            <a href="{% url 'user_list' %}" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Отмена
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

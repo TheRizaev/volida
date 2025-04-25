@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    .admin-content {
+        flex: 1;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="admin-header">
+    <div class="container">
+        <div class="logo">
+            <a href="{% url 'admin_dashboard' %}">
+                <img src="{% static 'images/volida.png' %}" alt="Volida" style="height: 40px; filter: brightness(0) invert(1);">
+            </a>
+        </div>
+        <nav class="admin-nav">
+            <a href="{% url 'admin_dashboard' %}">Главная</a>
+            <a href="{% url 'user_list' %}">Пользователи</a>
+            <a href="{% url 'logout' %}">Выход</a>
+        </nav>
+    </div>
+</header>
+
+<div class="admin-content">
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% block admin_content %}{% endblock %}
+    </div>
+</div>
+
+<footer class="admin-footer">
+    <div class="container">
+        <p style="text-align: center; padding: 15px 0; margin: 0; color: #6c757d;">&copy; {% now "Y" %} Volida. Все права защищены.</p>
+    </div>
+</footer>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Volida{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+    
+    <script>
+        // Скрипт для раскрытия/скрытия подменю
+        document.addEventListener('DOMContentLoaded', function() {
+            const subItems = document.querySelectorAll('.has-sub');
+            
+            subItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (e.target.closest('.submenu')) return;
+                    e.preventDefault();
+                    this.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

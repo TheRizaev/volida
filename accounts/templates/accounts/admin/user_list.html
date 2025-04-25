@@ -1,0 +1,72 @@
+{% extends 'accounts/admin/base_admin.html' %}
+
+{% block title %}Пользователи | Админ-панель | Volida{% endblock %}
+
+{% block admin_content %}
+<div class="admin-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="margin: 0;">Список пользователей</h2>
+        <a href="{% url 'user_create' %}" class="btn btn-primary btn-sm">
+            <i class="fas fa-user-plus"></i> Создать пользователя
+        </a>
+    </div>
+    
+    <div style="overflow-x: auto;">
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Телефон</th>
+                    <th>Имя</th>
+                    <th>Статус</th>
+                    <th>Роль</th>
+                    <th>Дата регистрации</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>
+                        {% if user.is_active %}
+                            <span style="color: green;">Активен</span>
+                        {% else %}
+                            <span style="color: red;">Неактивен</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.is_superuser %}
+                            <span style="font-weight: bold;">Суперпользователь</span>
+                        {% elif user.is_staff %}
+                            <span>Администратор</span>
+                        {% else %}
+                            <span>Пользователь</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <a href="{% url 'user_edit' user.id %}" class="btn btn-info btn-sm">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            {% if not user.is_superuser and user != request.user %}
+                            <a href="{% url 'user_delete' user.id %}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" style="text-align: center;">Пользователи не найдены</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}ы

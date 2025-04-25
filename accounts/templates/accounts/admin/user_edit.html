@@ -1,0 +1,166 @@
+{% extends 'accounts/admin/base_admin.html' %}
+
+{% block title %}Редактирование пользователя | Админ-панель | Volida{% endblock %}
+
+{% block admin_content %}
+<div class="admin-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="margin: 0;">Редактирование пользователя</h2>
+        <a href="{% url 'user_list' %}" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Назад к списку
+        </a>
+    </div>
+    
+    <div>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+            <div style="background-color: #f8f9fa; padding: 10px 15px; border-radius: 4px;">
+                <strong>ID:</strong> {{ user_obj.id }}
+            </div>
+            <div style="background-color: #f8f9fa; padding: 10px 15px; border-radius: 4px;">
+                <strong>Дата регистрации:</strong> {{ user_obj.date_joined|date:"d.m.Y H:i" }}
+            </div>
+            <div style="background-color: #f8f9fa; padding: 10px 15px; border-radius: 4px;">
+                <strong>Последний вход:</strong> 
+                {% if user_obj.last_login %}
+                    {{ user_obj.last_login|date:"d.m.Y H:i" }}
+                {% else %}
+                    Нет данных
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <ul class="nav-tabs" style="display: flex; list-style: none; padding: 0; margin: 0 0 20px 0; border-bottom: 1px solid #dee2e6;">
+        <li style="margin-right: 10px;">
+            <a href="#profile" style="display: inline-block; padding: 10px 15px; text-decoration: none; color: #333; font-weight: bold; border-bottom: 2px solid #0099cc;">Профиль</a>
+        </li>
+        <li>
+            <a href="#password" style="display: inline-block; padding: 10px 15px; text-decoration: none; color: #6c757d;">Сменить пароль</a>
+        </li>
+    </ul>
+    
+    <div id="profile-tab" class="tab-content">
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ user_form.username.id_for_label }}">{{ user_form.username.label }} *</label>
+                {{ user_form.username }}
+                {% if user_form.username.help_text %}
+                    <small style="color: #6c757d;">{{ user_form.username.help_text }}</small>
+                {% endif %}
+                {% if user_form.username.errors %}
+                    {% for error in user_form.username.errors %}
+                        <div style="color: red; font-size: 0.875em; margin-top: 5px;">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ user_form.is_staff.id_for_label }}">{{ user_form.is_staff.label }}</label>
+                {{ user_form.is_staff }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ user_form.is_active.id_for_label }}">{{ user_form.is_active.label }}</label>
+                {{ user_form.is_active }}
+            </div>
+            
+            <div class="form-group">
+                <label>Дополнительная информация (необязательно)</label>
+                <div style="border: 1px solid #ced4da; border-radius: 4px; padding: 15px; background-color: #f8f9fa;">
+                    <div class="form-group">
+                        <label for="{{ user_form.first_name.id_for_label }}">{{ user_form.first_name.label }}</label>
+                        {{ user_form.first_name }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ user_form.last_name.id_for_label }}">{{ user_form.last_name.label }}</label>
+                        {{ user_form.last_name }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="{{ user_form.email.id_for_label }}">{{ user_form.email.label }}</label>
+                        {{ user_form.email }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Сохранить изменения
+                </button>
+                <a href="{% url 'user_list' %}" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Отмена
+                </a>
+            </div>
+        </form>
+    </div>
+    
+    <div id="password-tab" class="tab-content" style="display: none;">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="change_password">
+            
+            {% for field in password_form.visible_fields %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %} *{% endif %}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: #6c757d;">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <div style="color: red; font-size: 0.875em; margin-top: 5px;">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% endfor %}
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-key"></i> Изменить пароль
+                </button>
+                <a href="{% url 'user_list' %}" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Отмена
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Простое переключение между вкладками
+    document.addEventListener('DOMContentLoaded', function() {
+        const profileTab = document.querySelector('a[href="#profile"]');
+        const passwordTab = document.querySelector('a[href="#password"]');
+        const profileContent = document.getElementById('profile-tab');
+        const passwordContent = document.getElementById('password-tab');
+        
+        profileTab.addEventListener('click', function(e) {
+            e.preventDefault();
+            profileTab.style.color = '#333';
+            profileTab.style.fontWeight = 'bold';
+            profileTab.style.borderBottom = '2px solid #0099cc';
+            passwordTab.style.color = '#6c757d';
+            passwordTab.style.fontWeight = 'normal';
+            passwordTab.style.borderBottom = 'none';
+            profileContent.style.display = 'block';
+            passwordContent.style.display = 'none';
+        });
+        
+        passwordTab.addEventListener('click', function(e) {
+            e.preventDefault();
+            passwordTab.style.color = '#333';
+            passwordTab.style.fontWeight = 'bold';
+            passwordTab.style.borderBottom = '2px solid #0099cc';
+            profileTab.style.color = '#6c757d';
+            profileTab.style.fontWeight = 'normal';
+            profileTab.style.borderBottom = 'none';
+            passwordContent.style.display = 'block';
+            profileContent.style.display = 'none';
+        });
+    });
+</script>
+{% endblock %}
+{% block extra_css %}

@@ -1,0 +1,42 @@
+{% extends 'accounts/admin/base_admin.html' %}
+
+{% block title %}Удаление пользователя | Админ-панель | Volida{% endblock %}
+
+{% block admin_content %}
+<div class="admin-card">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2 style="margin: 0;">Удаление пользователя</h2>
+        <a href="{% url 'user_list' %}" class="btn btn-secondary btn-sm">
+            <i class="fas fa-arrow-left"></i> Назад к списку
+        </a>
+    </div>
+    
+    <div class="alert alert-danger">
+        <i class="fas fa-exclamation-triangle" style="margin-right: 10px;"></i>
+        <strong>Внимание!</strong> Вы собираетесь удалить пользователя. Это действие нельзя отменить.
+    </div>
+    
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="margin-top: 0;">Информация о пользователе:</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: 10px;"><strong>ID:</strong> {{ user.id }}</li>
+            <li style="margin-bottom: 10px;"><strong>Телефон:</strong> {{ user.username }}</li>
+            <li style="margin-bottom: 10px;"><strong>Имя:</strong> {{ user.first_name }} {{ user.last_name }}</li>
+            <li style="margin-bottom: 10px;"><strong>Email:</strong> {{ user.email }}</li>
+            <li style="margin-bottom: 10px;"><strong>Дата регистрации:</strong> {{ user.date_joined|date:"d.m.Y H:i" }}</li>
+        </ul>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Подтвердить удаление
+            </button>
+            <a href="{% url 'user_list' %}" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Отмена
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
