@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 
 from .forms import (
     CustomAuthenticationForm, 
@@ -36,6 +37,124 @@ def dashboard(request):
         'active_menu': 'dashboard',
     }
     return render(request, 'accounts/dashboard.html', context)
+
+# Страница поставщиков
+@login_required
+def suppliers(request):
+    context = {
+        'active_menu': 'suppliers',
+    }
+    return render(request, 'accounts/suppliers.html', context)
+
+# Редактирование поставщика
+@login_required
+def supplier_edit(request, pk):
+    context = {
+        'active_menu': 'suppliers',
+        'supplier_id': pk,
+    }
+    return render(request, 'accounts/supplier_edit.html', context)
+
+# Страница прихода товара
+@login_required
+def product_income(request, pk):
+    context = {
+        'active_menu': 'suppliers',
+        'supplier_id': pk,
+    }
+    return render(request, 'accounts/product_income.html', context)
+
+# Страница возврата товара
+@login_required
+def product_return(request, pk):
+    context = {
+        'active_menu': 'suppliers',
+        'supplier_id': pk,
+    }
+    return render(request, 'accounts/product_return.html', context)
+
+# Страница выплат
+@login_required
+def payments(request, pk):
+    context = {
+        'active_menu': 'suppliers',
+        'supplier_id': pk,
+    }
+    return render(request, 'accounts/payments.html', context)
+
+# Заглушки для остальных страниц
+
+@login_required
+def production(request):
+    context = {
+        'active_menu': 'production',
+    }
+    return HttpResponse("Страница Производство продукции будет реализована позже")
+
+@login_required
+def clients(request):
+    context = {
+        'active_menu': 'clients',
+    }
+    return HttpResponse("Страница Клиенты будет реализована позже")
+
+@login_required
+def milk_income(request):
+    context = {
+        'active_menu': 'milk_income',
+    }
+    return HttpResponse("Страница Приход молока будет реализована позже")
+
+# Складской учет
+@login_required
+def inventory_goods(request):
+    context = {
+        'active_menu': 'inventory_goods',
+    }
+    return HttpResponse("Страница Склад товара будет реализована позже")
+
+@login_required
+def inventory_raw(request):
+    context = {
+        'active_menu': 'inventory_raw',
+    }
+    return HttpResponse("Страница Склад сырья будет реализована позже")
+
+@login_required
+def inventory_products(request):
+    context = {
+        'active_menu': 'inventory_products',
+    }
+    return HttpResponse("Страница Склад продукции будет реализована позже")
+
+@login_required
+def inventory_milk(request):
+    context = {
+        'active_menu': 'inventory_milk',
+    }
+    return HttpResponse("Страница Склад молока будет реализована позже")
+
+# Отчеты
+@login_required
+def reports_sales(request):
+    context = {
+        'active_menu': 'reports_sales',
+    }
+    return HttpResponse("Страница Отчет по продажам будет реализована позже")
+
+@login_required
+def reports_production(request):
+    context = {
+        'active_menu': 'reports_production',
+    }
+    return HttpResponse("Страница Отчет по производству будет реализована позже")
+
+@login_required
+def users(request):
+    context = {
+        'active_menu': 'users',
+    }
+    return HttpResponse("Страница Пользователи будет реализована позже")
 
 # Админ-панель - Главная страница
 @login_required

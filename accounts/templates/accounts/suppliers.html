@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Поставщики | Volida{% endblock %}
+
+{% block page_title %}Поставщики{% endblock %}
+
+{% block content %}
+<div class="action-bar">
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Поиск">
+        <button class="btn-dropdown">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+    <div class="action-buttons">
+        <button class="btn btn-icon">
+            <i class="fas fa-search"></i>
+        </button>
+        <button class="btn btn-icon">
+            <i class="fas fa-trash"></i>
+        </button>
+    </div>
+    <button class="btn btn-create" id="createSupplierBtn">
+        <i class="fas fa-plus"></i> Создать
+    </button>
+</div>
+
+<div class="table-container">
+    <table class="data-table">
+<th>Баланс</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-id="1">
+                <td>92</td>
+                <td>Ф/Х</td>
+                <td>GLOBAL INVESTMENT SYSTEMS OOO</td>
+                <td class="positive">+ 10 000 000</td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="{% url 'supplier_edit' 1 %}" class="btn btn-info btn-sm" title="Редактировать">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'product_income' 1 %}" class="btn btn-success btn-sm" title="Приход товара">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <a href="{% url 'product_return' 1 %}" class="btn btn-warning btn-sm" title="Возврат товара">
+                            <i class="fas fa-undo"></i>
+                        </a>
+                        <a href="{% url 'payments' 1 %}" class="btn btn-primary btn-sm" title="Выплаты">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr data-id="2">
+                <td>92</td>
+                <td>Ахоли</td>
+                <td>SOF ORGINAL CHEMICALS МЧЖ</td>
+                <td class="negative">- 10 000 000</td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="{% url 'supplier_edit' 2 %}" class="btn btn-info btn-sm" title="Редактировать">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'product_income' 2 %}" class="btn btn-success btn-sm" title="Приход товара">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <a href="{% url 'product_return' 2 %}" class="btn btn-warning btn-sm" title="Возврат товара">
+                            <i class="fas fa-undo"></i>
+                        </a>
+                        <a href="{% url 'payments' 2 %}" class="btn btn-primary btn-sm" title="Выплаты">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr data-id="3">
+                <td>92</td>
+                <td>Ф/Х</td>
+                <td>ЖАЛОЛИДДИН ҒАИПОВ фермерское хозяйство</td>
+                <td class="negative">- 9 800 000</td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="{% url 'supplier_edit' 3 %}" class="btn btn-info btn-sm" title="Редактировать">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'product_income' 3 %}" class="btn btn-success btn-sm" title="Приход товара">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <a href="{% url 'product_return' 3 %}" class="btn btn-warning btn-sm" title="Возврат товара">
+                            <i class="fas fa-undo"></i>
+                        </a>
+                        <a href="{% url 'payments' 3 %}" class="btn btn-primary btn-sm" title="Выплаты">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr data-id="4">
+                <td>92</td>
+                <td>Ахоли</td>
+                <td>GLOBAL INVESTMENT SYSTEMS OOO</td>
+                <td class="positive">+ 15 300 000</td>
+                <td>
+                    <div class="action-buttons">
+                        <a href="{% url 'supplier_edit' 4 %}" class="btn btn-info btn-sm" title="Редактировать">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="{% url 'product_income' 4 %}" class="btn btn-success btn-sm" title="Приход товара">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                        <a href="{% url 'product_return' 4 %}" class="btn btn-warning btn-sm" title="Возврат товара">
+                            <i class="fas fa-undo"></i>
+                        </a>
+                        <a href="{% url 'payments' 4 %}" class="btn btn-primary btn-sm" title="Выплаты">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Пагинация -->
+<div class="pagination-container">
+    <ul class="pagination">
+        <li><a href="#" class="previous"><i class="fas fa-angle-left"></i></a></li>
+        <li><a href="#" class="page-link">5</a></li>
+        <li><a href="#" class="page-link">...</a></li>
+        <li><a href="#" class="page-link">10</a></li>
+        <li class="active"><a href="#" class="page-link">11</a></li>
+        <li><a href="#" class="page-link">12</a></li>
+        <li><a href="#" class="page-link">13</a></li>
+        <li><a href="#" class="page-link">14</a></li>
+        <li><a href="#" class="page-link">15</a></li>
+        <li><a href="#" class="page-link">16</a></li>
+        <li><a href="#" class="page-link">...</a></li>
+        <li><a href="#" class="page-link">428</a></li>
+        <li><a href="#" class="next"><i class="fas fa-angle-right"></i></a></li>
+    </ul>
+</div>
+
+<!-- Модальное окно для создания поставщика -->
+<div class="modal" id="createSupplierModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Создание поставщика</h2>
+            <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="supplierForm">
+                <div class="form-group">
+                    <label for="orgName">Название организации:</label>
+                    <input type="text" id="orgName" name="orgName" class="form-control" placeholder="Введите название организации...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="director">Директор:</label>
+                    <input type="text" id="director" name="director" class="form-control" placeholder="Введите ФИО директора...">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="inn">ИНН:</label>
+                            <input type="text" id="inn" name="inn" class="form-control" placeholder="Введите ИНН...">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="account">Расчетный счет:</label>
+                            <input type="text" id="account" name="account" class="form-control" placeholder="Введите расчетный счет...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="phone">Номер телефона:</label>
+                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Введите номер...">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="address">Адрес:</label>
+                            <input type="text" id="address" name="address" class="form-control" placeholder="Введите адрес...">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="cancelSupplier">Отмена</button>
+            <button class="btn btn-primary" id="saveSupplier">
+                <i class="fas fa-save"></i> Сохранить
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Модальное окно для создания поставщика
+        const createSupplierBtn = document.getElementById('createSupplierBtn');
+        const createSupplierModal = document.getElementById('createSupplierModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelSupplier = document.getElementById('cancelSupplier');
+        
+        // Открыть модальное окно
+        createSupplierBtn.addEventListener('click', function() {
+            createSupplierModal.classList.add('show');
+        });
+        
+        // Закрыть модальное окно
+        function closeSupplierModal() {
+            createSupplierModal.classList.remove('show');
+        }
+        
+        closeModal.addEventListener('click', closeSupplierModal);
+        cancelSupplier.addEventListener('click', closeSupplierModal);
+        
+        // Закрыть при клике вне модального окна
+        createSupplierModal.addEventListener('click', function(e) {
+            if (e.target === createSupplierModal) {
+                closeSupplierModal();
+            }
+        });
+        
+        // Предотвращение отправки формы по умолчанию
+        document.getElementById('supplierForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+        
+        // Сохранение поставщика (заглушка)
+        document.getElementById('saveSupplier').addEventListener('click', function() {
+            alert('Функционал сохранения будет реализован в будущем с интеграцией базы данных.');
+            closeSupplierModal();
+        });
+        
+        // Клик по строке таблицы
+        const tableRows = document.querySelectorAll('.data-table tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('click', function(e) {
+                // Если клик не по кнопке действия
+                if (!e.target.closest('.action-buttons')) {
+                    const supplierId = this.getAttribute('data-id');
+                    window.location.href = '/suppliers/edit/' + supplierId + '/';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
