@@ -1,0 +1,409 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Данные поставщика | Volida{% endblock %}
+
+{% block page_title %}Данные поставщика{% endblock %}
+
+{% block content %}
+<div class="navigation-link">
+    <a href="{% url 'suppliers' %}" class="btn btn-secondary btn-sm">
+        <i class="fas fa-arrow-left"></i> Назад
+    </a>
+    
+    <!-- Информация о балансе -->
+    <div class="balance-info">
+        Баланс: <span class="positive">+ 15 300 000</span>
+    </div>
+</div>
+
+<!-- Общие данные о поставщике -->
+<div class="card">
+    <div class="card-header">
+        <h3>Общие данные</h3>
+        <a href="{% url 'supplier_edit' supplier_id %}" class="btn btn-sm btn-edit">
+            <i class="fas fa-edit"></i> Изменить
+        </a>
+    </div>
+    
+    <div class="card-body">
+        <div class="details-grid">
+            <div class="detail-item">
+                <span class="detail-label">Название организации:</span>
+                <span class="detail-value">GLOBAL INVESTMENT SYSTEMS OOO</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-label">ИНН:</span>
+                <span class="detail-value">1232131232</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-label">Директор:</span>
+                <span class="detail-value">Алимов Азиз Алимович</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-label">Номер телефона:</span>
+                <span class="detail-value">+998999999999</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-label">Расчетный счет:</span>
+                <span class="detail-value">31510940002023</span>
+            </div>
+            
+            <div class="detail-item">
+                <span class="detail-label">Адрес:</span>
+                <span class="detail-value">г.Ташкент Алайский базар, 2ой ряд после молочки</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Таблица товарооборота -->
+<div class="card mt-20">
+    <div class="card-header">
+        <h3>Товарооборот</h3>
+        <a href="{% url 'product_income' supplier_id %}" class="btn btn-sm btn-primary">
+            <i class="fas fa-plus"></i> Приход
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-container">
+            <table class="data-table bordered-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Дата</th>
+                        <th>Цена</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>92</td>
+                        <td>10.10.2024</td>
+                        <td>110 00 0000</td>
+                        <td class="status-unpaid">Не оплачен</td>
+                    </tr>
+                    <tr>
+                        <td>75</td>
+                        <td>10.10.2024</td>
+                        <td>10 500 000</td>
+                        <td class="status-partial">Оплачен частично</td>
+                    </tr>
+                    <tr>
+                        <td>70</td>
+                        <td>15.08.2024</td>
+                        <td>500 000</td>
+                        <td class="status-paid">Оплачен</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>10.10.2024</td>
+                        <td>8 000 000</td>
+                        <td class="status-paid">Оплачен</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>10.10.2024</td>
+                        <td>8 000 000</td>
+                        <td class="status-paid">Оплачен</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Пагинация -->
+        <div class="pagination-container">
+            <ul class="pagination">
+                <li><a href="#" class="previous"><i class="fas fa-angle-left"></i></a></li>
+                <li><a href="#" class="page-link">5</a></li>
+                <li><a href="#" class="page-link">...</a></li>
+                <li><a href="#" class="page-link">10</a></li>
+                <li class="active"><a href="#" class="page-link">11</a></li>
+                <li><a href="#" class="page-link">12</a></li>
+                <li><a href="#" class="page-link">13</a></li>
+                <li><a href="#" class="page-link">14</a></li>
+                <li><a href="#" class="page-link">15</a></li>
+                <li><a href="#" class="page-link">16</a></li>
+                <li><a href="#" class="page-link">...</a></li>
+                <li><a href="#" class="page-link">428</a></li>
+                <li><a href="#" class="next"><i class="fas fa-angle-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Таблица возвратов -->
+<div class="card mt-20">
+    <div class="card-header">
+        <h3>Возврат</h3>
+        <a href="{% url 'product_return' supplier_id %}" class="btn btn-sm btn-warning">
+            <i class="fas fa-undo"></i> Возврат
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-container">
+            <table class="data-table bordered-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Дата</th>
+                        <th>Номер партии</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>92</td>
+                        <td>10.10.2024</td>
+                        <td>92</td>
+                        <td>110 00 0000</td>
+                    </tr>
+                    <tr>
+                        <td>73</td>
+                        <td>10.10.2024</td>
+                        <td>90</td>
+                        <td>100 000</td>
+                    </tr>
+                    <tr>
+                        <td>70</td>
+                        <td>15.08.2024</td>
+                        <td>89</td>
+                        <td>10 000</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>10.10.2024</td>
+                        <td>88</td>
+                        <td>239 000</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>10.10.2024</td>
+                        <td>87</td>
+                        <td>250 000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Пагинация -->
+        <div class="pagination-container">
+            <ul class="pagination">
+                <li><a href="#" class="previous"><i class="fas fa-angle-left"></i></a></li>
+                <li><a href="#" class="page-link">5</a></li>
+                <li><a href="#" class="page-link">...</a></li>
+                <li><a href="#" class="page-link">10</a></li>
+                <li class="active"><a href="#" class="page-link">11</a></li>
+                <li><a href="#" class="page-link">12</a></li>
+                <li><a href="#" class="page-link">13</a></li>
+                <li><a href="#" class="page-link">14</a></li>
+                <li><a href="#" class="page-link">15</a></li>
+                <li><a href="#" class="page-link">16</a></li>
+                <li><a href="#" class="page-link">...</a></li>
+                <li><a href="#" class="page-link">428</a></li>
+                <li><a href="#" class="next"><i class="fas fa-angle-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Таблица выплат -->
+<div class="card mt-20">
+    <div class="card-header">
+        <h3>Выплаты</h3>
+        <a href="{% url 'payments' supplier_id %}" class="btn btn-sm btn-success">
+            <i class="fas fa-money-bill-wave"></i> Создать выплату
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-container">
+            <table class="data-table bordered-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Дата</th>
+                        <th>Товар</th>
+                        <th>Количество</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>92</td>
+                        <td>10.10.2024</td>
+                        <td>Бутылки 0.5 литр</td>
+                        <td>20</td>
+                        <td>1 500 000</td>
+                    </tr>
+                    <tr>
+                        <td>80</td>
+                        <td>15.08.2024</td>
+                        <td>Фольга смет.20%</td>
+                        <td>12</td>
+                        <td>500 000</td>
+                    </tr>
+                    <tr>
+                        <td>73</td>
+                        <td>10.10.2024</td>
+                        <td>Этикетка йог.Шафтоли</td>
+                        <td>100</td>
+                        <td>10 500 000</td>
+                    </tr>
+                    <tr>
+                        <td>70</td>
+                        <td>15.08.2024</td>
+                        <td>Фольга смет.20%</td>
+                        <td>12</td>
+                        <td>500 000</td>
+                    </tr>
+                    <tr>
+                        <td>68</td>
+                        <td>10.10.2024</td>
+                        <td>Этикетка йог.Шафтоли</td>
+                        <td>80</td>
+                        <td>8 000 000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Пагинация -->
+        <div class="pagination-container">
+            <ul class="pagination">
+                <li><a href="#" class="previous"><i class="fas fa-angle-left"></i></a></li>
+                <li><a href="#" class="page-link">5</a></li>
+                <li><a href="#" class="page-link">...</a></li>
+                <li><a href="#" class="page-link">10</a></li>
+                <li class="active"><a href="#" class="page-link">11</a></li>
+                <li><a href="#" class="page-link">12</a></li>
+                <li><a href="#" class="page-link">13</a></li>
+                <li><a href="#" class="page-link">14</a></li>
+                <li><a href="#" class="page-link">15</a></li>
+                <li><a href="#" class="page-link">16</a></li>
+                <li><a href="#" class="page-link">...</a></li>
+                <li><a href="#" class="page-link">428</a></li>
+                <li><a href="#" class="next"><i class="fas fa-angle-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Стили для навигации и информации о балансе */
+    .navigation-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .balance-info {
+        background-color: #f8f9fa;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: 1px solid #e0e0e0;
+        font-weight: 500;
+    }
+    
+    /* Стили для отображения деталей в сетке */
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    
+    .detail-item {
+        margin-bottom: 10px;
+    }
+    
+    .detail-label {
+        display: block;
+        font-weight: 500;
+        color: #6c757d;
+        margin-bottom: 5px;
+    }
+    
+    .detail-value {
+        display: block;
+        font-size: 16px;
+    }
+    
+    /* Стили для таблиц */
+    .bordered-table {
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .bordered-table th,
+    .bordered-table td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .bordered-table th:last-child,
+    .bordered-table td:last-child {
+        border-right: none;
+    }
+    
+    .bordered-table thead {
+        background-color: #f5f7fa;
+    }
+    
+    .bordered-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+    
+    /* Стили для статусов */
+    .status-paid {
+        color: #28a745;
+        font-weight: 500;
+    }
+    
+    .status-unpaid {
+        color: #dc3545;
+        font-weight: 500;
+    }
+    
+    .status-partial {
+        color: #ffc107;
+        font-weight: 500;
+    }
+    
+    /* Кнопки в заголовках */
+    .btn-edit {
+        background-color: #6c757d;
+        color: white;
+    }
+    
+    .btn-edit:hover {
+        background-color: #5a6268;
+        color: white;
+    }
+    
+    .btn-warning {
+        background-color: #ffc107;
+        color: #212529;
+    }
+    
+    .btn-warning:hover {
+        background-color: #e0a800;
+    }
+    
+    /* Отступы */
+    .mt-20 {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}

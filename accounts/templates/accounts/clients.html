@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Поставщики | Volida{% endblock %}
+{% block title %}Клиенты | Volida{% endblock %}
 
-{% block page_title %}Поставщики{% endblock %}
+{% block page_title %}Клиенты{% endblock %}
 
 {% block content %}
 <div class="action-bar">
@@ -21,7 +21,7 @@
             <i class="fas fa-trash"></i>
         </button>
     </div>
-    <button class="btn btn-create" id="createSupplierBtn">
+    <button class="btn btn-create" id="createClientBtn">
         <i class="fas fa-plus"></i> Создать
     </button>
 </div>
@@ -31,35 +31,40 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Категория</th>
                 <th>Название</th>
+                <th>Телефон</th>
+                <th>Адрес</th>
                 <th>Баланс</th>
             </tr>
         </thead>
         <tbody>
-            <tr data-id="1" class="supplier-row">
+            <tr data-id="1" class="client-row">
                 <td>92</td>
-                <td>Ф/Х</td>
-                <td>GLOBAL INVESTMENT SYSTEMS OOO</td>
-                <td class="positive">+ 10 000 000</td>
-            </tr>
-            <tr data-id="2" class="supplier-row">
-                <td>92</td>
-                <td>Ахоли</td>
-                <td>SOF ORGINAL CHEMICALS МЧЖ</td>
+                <td>ANSOR MARKET UCH MCHI</td>
+                <td>+998999999999</td>
+                <td>г.Ташкент Алайский базар, 2ой ряд после молочки</td>
                 <td class="negative">- 10 000 000</td>
             </tr>
-            <tr data-id="3" class="supplier-row">
-                <td>92</td>
-                <td>Ф/Х</td>
-                <td>ЖАЛОЛИДДИН ҒАИПОВ фермерское хозяйство</td>
-                <td class="negative">- 9 800 000</td>
+            <tr data-id="2" class="client-row">
+                <td>85</td>
+                <td>OOO BALANS PERFECTION</td>
+                <td>+998911234567</td>
+                <td>г.Ташкент, ул. Мирзо-Улугбек, д.32</td>
+                <td class="positive">+ 5 300 000</td>
             </tr>
-            <tr data-id="4" class="supplier-row">
-                <td>92</td>
-                <td>Ахоли</td>
-                <td>GLOBAL INVESTMENT SYSTEMS OOO</td>
-                <td class="positive">+ 15 300 000</td>
+            <tr data-id="3" class="client-row">
+                <td>73</td>
+                <td>ЧП MAXSULOT SAVDO BIZNES</td>
+                <td>+998972345678</td>
+                <td>г.Самарканд, ул. Рудаки, д.15</td>
+                <td class="negative">- 8 400 000</td>
+            </tr>
+            <tr data-id="4" class="client-row">
+                <td>68</td>
+                <td>MARKET OYBEK</td>
+                <td>+998993456789</td>
+                <td>г.Ташкент, ул. Шота Руставели, д.55</td>
+                <td class="positive">+ 12 750 000</td>
             </tr>
         </tbody>
     </table>
@@ -84,18 +89,18 @@
     </ul>
 </div>
 
-<!-- Модальное окно для создания поставщика -->
-<div class="modal" id="createSupplierModal">
+<!-- Модальное окно для создания клиента -->
+<div class="modal" id="createClientModal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Создание поставщика</h2>
+            <h2>Создание клиента</h2>
             <button class="close-btn" id="closeModal">&times;</button>
         </div>
         <div class="modal-body">
-            <form id="supplierForm">
+            <form id="clientForm">
                 <div class="form-group">
-                    <label for="orgName">Название организации:</label>
-                    <input type="text" id="orgName" name="orgName" class="form-control" placeholder="Введите название организации...">
+                    <label for="clientName">Название клиента:</label>
+                    <input type="text" id="clientName" name="clientName" class="form-control" placeholder="Введите название клиента...">
                 </div>
                 
                 <div class="form-group">
@@ -135,8 +140,8 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-secondary" id="cancelSupplier">Отмена</button>
-            <button class="btn btn-primary" id="saveSupplier">
+            <button class="btn btn-secondary" id="cancelClient">Отмена</button>
+            <button class="btn btn-primary" id="saveClient">
                 <i class="fas fa-save"></i> Сохранить
             </button>
         </div>
@@ -146,7 +151,7 @@
 
 {% block extra_css %}
 <style>
-    /* Стили для таблицы поставщиков */
+    /* Стили для таблицы клиентов */
     .data-table {
         border-collapse: separate;
         border-spacing: 0;
@@ -177,12 +182,12 @@
         border-bottom: none;
     }
     
-    .supplier-row {
+    .client-row {
         cursor: pointer;
         transition: background-color 0.2s;
     }
     
-    .supplier-row:hover {
+    .client-row:hover {
         background-color: #f0f7ff;
     }
     
@@ -201,49 +206,49 @@
 {% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Модальное окно для создания поставщика
-        const createSupplierBtn = document.getElementById('createSupplierBtn');
-        const createSupplierModal = document.getElementById('createSupplierModal');
+        // Модальное окно для создания клиента
+        const createClientBtn = document.getElementById('createClientBtn');
+        const createClientModal = document.getElementById('createClientModal');
         const closeModal = document.getElementById('closeModal');
-        const cancelSupplier = document.getElementById('cancelSupplier');
+        const cancelClient = document.getElementById('cancelClient');
         
         // Открыть модальное окно
-        createSupplierBtn.addEventListener('click', function() {
-            createSupplierModal.classList.add('show');
+        createClientBtn.addEventListener('click', function() {
+            createClientModal.classList.add('show');
         });
         
         // Закрыть модальное окно
-        function closeSupplierModal() {
-            createSupplierModal.classList.remove('show');
+        function closeClientModal() {
+            createClientModal.classList.remove('show');
         }
         
-        closeModal.addEventListener('click', closeSupplierModal);
-        cancelSupplier.addEventListener('click', closeSupplierModal);
+        closeModal.addEventListener('click', closeClientModal);
+        cancelClient.addEventListener('click', closeClientModal);
         
         // Закрыть при клике вне модального окна
-        createSupplierModal.addEventListener('click', function(e) {
-            if (e.target === createSupplierModal) {
-                closeSupplierModal();
+        createClientModal.addEventListener('click', function(e) {
+            if (e.target === createClientModal) {
+                closeClientModal();
             }
         });
         
         // Предотвращение отправки формы по умолчанию
-        document.getElementById('supplierForm').addEventListener('submit', function(e) {
+        document.getElementById('clientForm').addEventListener('submit', function(e) {
             e.preventDefault();
         });
         
-        // Сохранение поставщика (заглушка)
-        document.getElementById('saveSupplier').addEventListener('click', function() {
+        // Сохранение клиента (заглушка)
+        document.getElementById('saveClient').addEventListener('click', function() {
             alert('Функционал сохранения будет реализован в будущем с интеграцией базы данных.');
-            closeSupplierModal();
+            closeClientModal();
         });
         
-        // Клик по строке таблицы - перенаправление на страницу деталей поставщика
-        const supplierRows = document.querySelectorAll('.supplier-row');
-        supplierRows.forEach(row => {
+        // Клик по строке таблицы - перенаправление на страницу деталей клиента
+        const clientRows = document.querySelectorAll('.client-row');
+        clientRows.forEach(row => {
             row.addEventListener('click', function() {
-                const supplierId = this.getAttribute('data-id');
-                window.location.href = `/suppliers/view/${supplierId}/`;
+                const clientId = this.getAttribute('data-id');
+                window.location.href = `/clients/view/${clientId}/`;
             });
         });
     });

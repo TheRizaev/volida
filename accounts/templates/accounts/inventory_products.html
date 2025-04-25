@@ -1,0 +1,354 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Склад продукции | Volida{% endblock %}
+
+{% block page_title %}Склад продукции{% endblock %}
+
+{% block content %}
+<!-- Таблица продукции в две колонки -->
+<div class="inventory-table-container">
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Наименование продукции</th>
+                <th>Кол-во</th>
+                <th>№</th>
+                <th>Наименование продукции</th>
+                <th>Кол-во</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Сметана 20 % (кг)</td>
+                <td>20</td>
+                <td>21</td>
+                <td>Йогурт клубника (дойч)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Сметана  20% (дойч)</td>
+                <td>20</td>
+                <td>22</td>
+                <td>Йогурт персик (дойч)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Катик  1% (кг)</td>
+                <td>20</td>
+                <td>23</td>
+                <td>Десерт банан (дойч)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Катик  2,5% (кг)</td>
+                <td>20</td>
+                <td>24</td>
+                <td>Десерт клубника (дойч)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Катик 0,5 литр (дойч)</td>
+                <td>20</td>
+                <td>25</td>
+                <td>Брынза (кг)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Катик 2,5%1 литр (дойч)</td>
+                <td>20</td>
+                <td>26</td>
+                <td>Айрон стакан 400 гр. (дойч)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Катик 4%1 л. бочка (дойч)</td>
+                <td>20</td>
+                <td>27</td>
+                <td>Айрон 1 литр (дойч)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Творог (кг)</td>
+                <td>20</td>
+                <td>28</td>
+                <td>Айрон бочка 1 литр (дойч)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Творог 350 гр (дойч)</td>
+                <td>20</td>
+                <td>29</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Творог масса 350гр шоколад (дойч)</td>
+                <td>20</td>
+                <td>30</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Творог масса 350гр Изюм (дойч)</td>
+                <td>20</td>
+                <td>31</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Творог масса 350гр Пломбир (дойч)</td>
+                <td>20</td>
+                <td>32</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Творог масса (кг)</td>
+                <td>20</td>
+                <td>33</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Каймок (кг)</td>
+                <td>20</td>
+                <td>34</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Каймок 45% (дойч)</td>
+                <td>20</td>
+                <td>35</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Каймок 55% (дойч)</td>
+                <td>20</td>
+                <td>36</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Сухой  (кг)</td>
+                <td>20</td>
+                <td>37</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Сарнеч 72% (кг)</td>
+                <td>20</td>
+                <td>38</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Сыр (кг)</td>
+                <td>20</td>
+                <td>39</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>Йогурт банан (дойч)</td>
+                <td>20</td>
+                <td>40</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Кнопка "Списать" -->
+<div class="write-off-button-container">
+    <button class="btn btn-write-off">
+        <i class="fas fa-trash"></i> Списать
+    </button>
+</div>
+
+<!-- Таблица со списаниями -->
+<div class="write-off-table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Дата</th>
+                <th>Продукция</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>Каймок 45% (дойч), Каймок (кг), Творог 350 гр (дойч), Катик 4%1 л. бочка (дойч) ...</td>
+            </tr>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>Каймок 45% (дойч), Каймок (кг), Творог 350 гр (дойч), Катик 4%1 л. бочка (дойч) ...</td>
+            </tr>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>Каймок 45% (дойч), Каймок (кг), Творог 350 гр (дойч), Катик 4%1 л. бочка (дойч) ...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Стили для таблицы инвентаризации с двумя колонками */
+    .inventory-table-container {
+        margin-bottom: 50px;  /* Было 30px, увеличиваем до 50px */
+    }
+    
+    .inventory-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .inventory-table th,
+    .inventory-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .inventory-table th:nth-child(3n),
+    .inventory-table td:nth-child(3n) {
+        border-right: 2px solid #ccc;
+    }
+    
+    .inventory-table th:last-child,
+    .inventory-table td:last-child {
+        border-right: none;
+    }
+    
+    .inventory-table thead {
+        background-color: #f5f7fa;
+    }
+    
+    .inventory-table th {
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .inventory-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+    
+    /* Стили для кнопки "Списать" */
+    .write-off-button-container {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+    
+    .btn-write-off {
+        background-color: #6c757d;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn-write-off:hover {
+        background-color: #5a6268;
+    }
+    
+    /* Стили для таблицы списаний */
+    .write-off-table-container {
+        margin-top: 50px;  /* Было 30px, увеличиваем до 50px */
+        padding-top: 30px;
+        border-top: 1px dashed #e0e0e0;  /* Добавляем пунктирную линию как разделитель */
+    }
+    
+    .write-off-section-title {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #555;
+        font-weight: 500;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .data-table th:last-child,
+    .data-table td:last-child {
+        border-right: none;
+    }
+    
+    .data-table thead {
+        background-color: #f5f7fa;
+    }
+    
+    .data-table th {
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .data-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Заглушка для кнопки "Списать"
+        const writeOffButton = document.querySelector('.btn-write-off');
+        if (writeOffButton) {
+            writeOffButton.addEventListener('click', function() {
+                alert('Функционал списания будет реализован в будущей версии.');
+            });
+        }
+    });
+</script>
+{% endblock %}

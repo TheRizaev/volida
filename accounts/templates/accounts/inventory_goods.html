@@ -1,0 +1,410 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Склад товара | Volida{% endblock %}
+
+{% block page_title %}Склад товара{% endblock %}
+
+{% block content %}
+<!-- Таблица товаров в три колонки -->
+<div class="inventory-table-container">
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Наименование товара</th>
+                <th>Кол-во</th>
+                <th>№</th>
+                <th>Наименование товара</th>
+                <th>Кол-во</th>
+                <th>№</th>
+                <th>Наименование товара</th>
+                <th>Кол-во</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Кефир 4% бочка 1л</td>
+                <td>20</td>
+                <td>21</td>
+                <td>Кошик десерта</td>
+                <td>20</td>
+                <td>41</td>
+                <td>Этикетка кеф.бочка 2,5%</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Кефир 2,5% бочка 1л</td>
+                <td>20</td>
+                <td>22</td>
+                <td>Крышки тв.масса шоколад</td>
+                <td>20</td>
+                <td>42</td>
+                <td>Этикетка 0,5 кеф.</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Бутылки 1л</td>
+                <td>20</td>
+                <td>23</td>
+                <td>Крышки тв.масса изюм</td>
+                <td>20</td>
+                <td>43</td>
+                <td>Этикетка йог.Шафтоли</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Бутылки 0,5л</td>
+                <td>20</td>
+                <td>24</td>
+                <td>Крышки тв.масса пломб</td>
+                <td>20</td>
+                <td>44</td>
+                <td>Этикетка йог.Банан</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Каймок идиш 45%</td>
+                <td>20</td>
+                <td>25</td>
+                <td>Крышки сметаньк</td>
+                <td>20</td>
+                <td>45</td>
+                <td>Этикетка йог.клубн.</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Каймок идиш 55%</td>
+                <td>20</td>
+                <td>26</td>
+                <td>Крышки десерт</td>
+                <td>20</td>
+                <td>46</td>
+                <td>Этикетка сл.масло</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Сметана идиш 10%</td>
+                <td>20</td>
+                <td>27</td>
+                <td>Крышки бутылка белый</td>
+                <td>20</td>
+                <td>47</td>
+                <td>Этикетка кефир 1 л.</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Сметана идиш 20%</td>
+                <td>20</td>
+                <td>28</td>
+                <td>Крышки бутылка голубой</td>
+                <td>20</td>
+                <td>48</td>
+                <td>Этикетка твор.350 гр.</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Бутыл йогурт</td>
+                <td>20</td>
+                <td>29</td>
+                <td>Крыш.бочка айрон 1л</td>
+                <td>20</td>
+                <td>49</td>
+                <td>Этикетка тв.мас.</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Твор. идиш масса 350 шок.</td>
+                <td>20</td>
+                <td>30</td>
+                <td>Крыш.бочка кеф.1л.2,5%</td>
+                <td>20</td>
+                <td>50</td>
+                <td>Дата тянэча кф.колпачка</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Твор. идиш масса изюм</td>
+                <td>20</td>
+                <td>31</td>
+                <td>Крышки бочка кф.1л4%</td>
+                <td>20</td>
+                <td>51</td>
+                <td>Дата этикет колпачка</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Твор. идиш мас.пломбир</td>
+                <td>20</td>
+                <td>32</td>
+                <td>Фольга айрон стакан</td>
+                <td>20</td>
+                <td>52</td>
+                <td>Колоз кол суройға</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Твор.идиш 350гр.</td>
+                <td>20</td>
+                <td>33</td>
+                <td>Фольга смет.10%</td>
+                <td>20</td>
+                <td>53</td>
+                <td>Целлофан кол суройға</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>Твор.идиш РКС 350гр.</td>
+                <td>20</td>
+                <td>34</td>
+                <td>Фольга смет.20%</td>
+                <td>20</td>
+                <td>54</td>
+                <td>Кайнeчка целлофан кол</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>Твор.идиш РКС 500</td>
+                <td>20</td>
+                <td>35</td>
+                <td>Фольга дес.Банан</td>
+                <td>20</td>
+                <td>55</td>
+                <td>Пакир 60 литр</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>Айрон идиш 1 л.</td>
+                <td>20</td>
+                <td>36</td>
+                <td>Фольга дес.Клубника</td>
+                <td>20</td>
+                <td>56</td>
+                <td>Пакир ок 20 литр</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>Айрон идиш стакан</td>
+                <td>20</td>
+                <td>37</td>
+                <td>Фольга каймок 45%</td>
+                <td>20</td>
+                <td>57</td>
+                <td>Пакир ок 50 литр</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>Айрон ид.1л.бочка</td>
+                <td>20</td>
+                <td>38</td>
+                <td>Фольга каймок 55%</td>
+                <td>20</td>
+                <td>58</td>
+                <td>Пакир ок 80 литр</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Десерт идиш банан</td>
+                <td>20</td>
+                <td>39</td>
+                <td>Этикетка айрон 1 л</td>
+                <td>20</td>
+                <td>59</td>
+                <td>Точра катта</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>Десерт идиш клубника</td>
+                <td>20</td>
+                <td>40</td>
+                <td>Этикетка кеф.бочка 4%</td>
+                <td>20</td>
+                <td>60</td>
+                <td>Точра овалън</td>
+                <td>20</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Кнопка "Списать" -->
+<div class="write-off-button-container">
+    <button class="btn btn-write-off">
+        <i class="fas fa-trash"></i> Списать
+    </button>
+</div>
+
+<!-- Таблица со списаниями -->
+<div class="write-off-table-container">
+    <h3 class="write-off-section-title">История списаний товара</h3>
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Дата</th>
+                <th>Товар</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>Кефир 4% бочка 1л, Бутылки 1л, Каймок идиш 45%,Пакир 60 литр,Пакир ок 80 литр ...</td>
+            </tr>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>Кефир 4% бочка 1л, Бутылки 1л, Каймок идиш 45%,Пакир 60 литр,Пакир ок 80 литр ...</td>
+            </tr>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>Кефир 4% бочка 1л, Бутылки 1л, Каймок идиш 45%,Пакир 60 литр,Пакир ок 80 литр ...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Стили для таблицы инвентаризации с тремя колонками */
+    .inventory-table-container {
+        margin-bottom: 30px;
+        overflow-x: auto;
+    }
+    
+    .inventory-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .inventory-table th,
+    .inventory-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .inventory-table th:nth-child(3n),
+    .inventory-table td:nth-child(3n) {
+        border-right: 2px solid #ccc;
+    }
+    
+    .inventory-table th:last-child,
+    .inventory-table td:last-child {
+        border-right: none;
+    }
+    
+    .inventory-table thead {
+        background-color: #f5f7fa;
+    }
+    
+    .inventory-table th {
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .inventory-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+    
+    /* Стили для кнопки "Списать" */
+    .write-off-button-container {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+    
+    .btn-write-off {
+        background-color: #6c757d;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn-write-off:hover {
+        background-color: #5a6268;
+    }
+    
+    /* Стили для таблицы списаний */
+    .write-off-table-container {
+        margin-top: 30px;
+    }
+    
+    .data-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .data-table th:last-child,
+    .data-table td:last-child {
+        border-right: none;
+    }
+    
+    .data-table thead {
+        background-color: #f5f7fa;
+    }
+    
+    .data-table th {
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .data-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Заглушка для кнопки "Списать"
+        const writeOffButton = document.querySelector('.btn-write-off');
+        if (writeOffButton) {
+            writeOffButton.addEventListener('click', function() {
+                alert('Функционал списания будет реализован в будущей версии.');
+            });
+        }
+    });
+</script>
+{% endblock %}

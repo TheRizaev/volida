@@ -33,8 +33,25 @@ class CustomLoginView(LoginView):
 # Базовая страница после авторизации для обычных пользователей
 @login_required
 def dashboard(request):
+    """
+    Отображает главную страницу дашборда с финансовой информацией
+    """
+    # В будущем здесь будет получение реальных данных из базы
     context = {
         'active_menu': 'dashboard',
+        # Данные для дашборда
+        'balance': 5366814,
+        'account_percentage': 81,
+        'cash_percentage': 20,
+        'debit_amount': 5366814,
+        'credit_amount': 5366814,
+        'stock_value': 52000000,
+        'raw_value': 13000000,
+        'raw_percentage': 80,
+        'goods_value': 27000000,
+        'goods_percentage': 10,
+        'products_value': 58000000,
+        'products_percentage': 10
     }
     return render(request, 'accounts/dashboard.html', context)
 
@@ -46,7 +63,23 @@ def suppliers(request):
     }
     return render(request, 'accounts/suppliers.html', context)
 
-# Редактирование поставщика
+# Страница просмотра деталей поставщика
+@login_required
+def supplier_details(request, pk):
+    # В реальном проекте здесь нужно получить объект поставщика из базы данных
+    # supplier = get_object_or_404(Supplier, pk=pk)
+    
+    context = {
+        'active_menu': 'suppliers',
+        'supplier_id': pk,
+        # В реальном проекте здесь будут данные поставщика
+        # 'supplier': supplier,
+        # 'transactions': supplier.transactions.all(),
+        # 'returns': supplier.returns.all(),
+    }
+    return render(request, 'accounts/supplier_details.html', context)
+
+# Страница редактирования поставщика
 @login_required
 def supplier_edit(request, pk):
     context = {
@@ -82,57 +115,191 @@ def payments(request, pk):
     }
     return render(request, 'accounts/payments.html', context)
 
-# Заглушки для остальных страниц
-
+# Страница прихода товара
 @login_required
-def production(request):
+def product_income(request, pk):
     context = {
-        'active_menu': 'production',
+        'active_menu': 'suppliers',
+        'supplier_id': pk,
     }
-    return HttpResponse("Страница Производство продукции будет реализована позже")
+    return render(request, 'accounts/product_income.html', context)
+
+# Страница возврата товара
+@login_required
+def product_return(request, pk):
+    context = {
+        'active_menu': 'suppliers',
+        'supplier_id': pk,
+    }
+    return render(request, 'accounts/product_return.html', context)
 
 @login_required
 def clients(request):
     context = {
         'active_menu': 'clients',
     }
-    return HttpResponse("Страница Клиенты будет реализована позже")
+    return render(request, 'accounts/clients.html', context)
 
+# Страница просмотра деталей клиента
+@login_required
+def client_details(request, pk):
+    # В реальном проекте здесь нужно получить объект клиента из базы данных
+    # client = get_object_or_404(Client, pk=pk)
+    
+    context = {
+        'active_menu': 'clients',
+        'client_id': pk,
+        # В реальном проекте здесь будут данные клиента
+        # 'client': client,
+        # 'transactions': client.transactions.all(),
+        # 'payments': client.payments.all(),
+    }
+    return render(request, 'accounts/client_details.html', context)
+
+# Страница редактирования клиента
+@login_required
+def client_edit(request, pk):
+    context = {
+        'active_menu': 'clients',
+        'client_id': pk,
+    }
+    return render(request, 'accounts/client_edit.html', context)
+
+# Страница возврата продукции от клиента
+@login_required
+def client_product_return(request, pk):
+    context = {
+        'active_menu': 'clients',
+        'client_id': pk,
+    }
+    return render(request, 'accounts/client_product_return.html', context)
+
+# Страница сбыта продукции клиенту
+@login_required
+def client_product_sale(request, pk):
+    context = {
+        'active_menu': 'clients',
+        'client_id': pk,
+    }
+    return render(request, 'accounts/client_product_sale.html', context)
+
+# Страница создания поступления от клиента
+@login_required
+def client_payment(request, pk):
+    context = {
+        'active_menu': 'clients',
+        'client_id': pk,
+    }
+    return render(request, 'accounts/client_payment.html', context)
+
+@login_required
+def production(request):
+    context = {
+        'active_menu': 'production',
+    }
+    return render(request, 'accounts/production.html', context)
+
+# Страница деталей производства
+@login_required
+def production_details(request, pk):
+    context = {
+        'active_menu': 'production',
+        'production_id': pk,
+    }
+    return render(request, 'accounts/production_details.html', context)
+
+# Страница создания производства
+@login_required
+def production_create(request):
+    if request.method == 'POST':
+        # В будущем здесь будет обработка формы
+        return redirect('production')
+    
+    context = {
+        'active_menu': 'production',
+    }
+    return render(request, 'accounts/production_create.html', context)
+
+# Страница прихода молока
 @login_required
 def milk_income(request):
     context = {
         'active_menu': 'milk_income',
     }
-    return HttpResponse("Страница Приход молока будет реализована позже")
+    return render(request, 'accounts/milk_income.html', context)
 
-# Складской учет
+# Страница деталей прихода молока
+@login_required
+def milk_income_details(request, pk):
+    context = {
+        'active_menu': 'milk_income',
+        'milk_income_id': pk,
+    }
+    return render(request, 'accounts/milk_income_details.html', context)
+
+# Страница создания прихода молока
+@login_required
+def milk_income_create(request):
+    if request.method == 'POST':
+        # В будущем здесь будет обработка формы
+        return redirect('milk_income')
+    
+    context = {
+        'active_menu': 'milk_income',
+    }
+    return render(request, 'accounts/milk_income_create.html', context)
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+
+# Страница склада товара
 @login_required
 def inventory_goods(request):
     context = {
         'active_menu': 'inventory_goods',
     }
-    return HttpResponse("Страница Склад товара будет реализована позже")
+    return render(request, 'accounts/inventory_goods.html', context)
 
+# Страница склада сырья
 @login_required
 def inventory_raw(request):
     context = {
         'active_menu': 'inventory_raw',
     }
-    return HttpResponse("Страница Склад сырья будет реализована позже")
+    return render(request, 'accounts/inventory_raw.html', context)
 
+# Страница склада продукции
 @login_required
 def inventory_products(request):
     context = {
         'active_menu': 'inventory_products',
     }
-    return HttpResponse("Страница Склад продукции будет реализована позже")
+    return render(request, 'accounts/inventory_products.html', context)
 
+# Страница склада молока
 @login_required
 def inventory_milk(request):
     context = {
         'active_menu': 'inventory_milk',
     }
-    return HttpResponse("Страница Склад молока будет реализована позже")
+    return render(request, 'accounts/inventory_milk.html', context)
+
+# Общая функция для списания товаров/сырья/продукции/молока
+@login_required
+def inventory_writeoff(request, inventory_type):
+    if request.method == 'POST':
+        # В будущем здесь будет обработка формы списания
+        if inventory_type == 'goods':
+            return redirect('inventory_goods')
+        elif inventory_type == 'raw':
+            return redirect('inventory_raw')
+        elif inventory_type == 'products':
+            return redirect('inventory_products')
+        elif inventory_type == 'milk':
+            return redirect('inventory_milk')
+    
+    # Если запрос не POST, перенаправляем на соответствующую страницу склада
+    return redirect(f'inventory_{inventory_type}')
 
 # Отчеты
 @login_required

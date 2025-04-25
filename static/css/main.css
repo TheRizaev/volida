@@ -759,3 +759,132 @@ select.form-control {
 .forgot-password:hover {
     text-decoration: underline;
 }
+
+.data-table.bordered-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.data-table.bordered-table th,
+.data-table.bordered-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+}
+
+.data-table.bordered-table th:last-child,
+.data-table.bordered-table td:last-child {
+    border-right: none;
+}
+
+.data-table.bordered-table thead {
+    background-color: #f5f7fa;
+}
+
+.data-table.bordered-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Стили для кликабельных строк */
+.data-table .clickable-row {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.data-table .clickable-row:hover {
+    background-color: #f0f7ff;
+}
+
+/* Стили для статусов */
+.status-paid {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.status-unpaid {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.status-partial {
+    color: #ffc107;
+    font-weight: 500;
+}
+
+/* Стили для верхней панели навигации с балансом */
+.top-navigation-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.balance-info {
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    font-weight: 500;
+}
+
+/* Стили для карточки с информацией */
+.info-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.info-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.info-card-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.info-card-body {
+    padding: 20px;
+}
+
+/* Сетка для отображения информации */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.info-item {
+    margin-bottom: 10px;
+}
+
+.info-label {
+    display: block;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.info-value {
+    display: block;
+    font-size: 16px;
+}
+
+/* Кнопки действий */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 14px;
+}

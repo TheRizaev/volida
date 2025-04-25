@@ -1,0 +1,417 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Склад сырья | Volida{% endblock %}
+
+{% block page_title %}Склад сырья{% endblock %}
+
+{% block content %}
+<!-- Таблица сырья в три колонки -->
+<div class="inventory-table-container">
+    <table class="inventory-table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Наименование сырья</th>
+                <th>Кол-во</th>
+                <th>№</th>
+                <th>Наименование сырья</th>
+                <th>Кол-во</th>
+                <th>№</th>
+                <th>Наименование сырья</th>
+                <th>Кол-во</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Y 436 A унивесал</td>
+                <td>20</td>
+                <td>21</td>
+                <td>Mir Italia</td>
+                <td>20</td>
+                <td>41</td>
+                <td>Пломбир</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Y 551 Г бочка</td>
+                <td>20</td>
+                <td>22</td>
+                <td>MW 038 TA</td>
+                <td>20</td>
+                <td>42</td>
+                <td>Ароматизатор каймок</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Y 258 A кефирлар</td>
+                <td>20</td>
+                <td>23</td>
+                <td>MW 035 TA</td>
+                <td>20</td>
+                <td>43</td>
+                <td>Стабилмикс</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Y 257 A кефирлар</td>
+                <td>20</td>
+                <td>24</td>
+                <td>MW 039 TA</td>
+                <td>20</td>
+                <td>44</td>
+                <td>Смес суюлга</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>ST 339 сметана</td>
+                <td>20</td>
+                <td>25</td>
+                <td>MO 342</td>
+                <td>20</td>
+                <td>45</td>
+                <td>Оксид</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>ST 338 сметана</td>
+                <td>20</td>
+                <td>26</td>
+                <td>Y330A</td>
+                <td>20</td>
+                <td>46</td>
+                <td>Смес сурга</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>MS 064 мц.творог</td>
+                <td>20</td>
+                <td>27</td>
+                <td>ST447</td>
+                <td>20</td>
+                <td>47</td>
+                <td>Мьайз</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>MOS 059 мц.творог</td>
+                <td>20</td>
+                <td>28</td>
+                <td>MT432</td>
+                <td>20</td>
+                <td>48</td>
+                <td>Шоколад гранула</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Y 901 айрон</td>
+                <td>20</td>
+                <td>29</td>
+                <td>LPRA</td>
+                <td>20</td>
+                <td>49</td>
+                <td>Шоколад тёртый</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Y 903 айрон</td>
+                <td>20</td>
+                <td>30</td>
+                <td>XPL -30</td>
+                <td>20</td>
+                <td>50</td>
+                <td>Йогурт крем клубный</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Y 452 B йогурт</td>
+                <td>20</td>
+                <td>31</td>
+                <td>Трансглютаминаза</td>
+                <td>20</td>
+                <td>51</td>
+                <td>Йогурт крем шафтоли</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>SC 101 L 40 десерт</td>
+                <td>20</td>
+                <td>32</td>
+                <td>Кальций хлор</td>
+                <td>20</td>
+                <td>52</td>
+                <td>Йогурт крем банан</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>Y 450 B</td>
+                <td>20</td>
+                <td>33</td>
+                <td>Пепсин</td>
+                <td>20</td>
+                <td>53</td>
+                <td>Каустика</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>DT-DROX TTX6 кефир</td>
+                <td>20</td>
+                <td>34</td>
+                <td>Ниацин</td>
+                <td>20</td>
+                <td>54</td>
+                <td>Крахмал</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>YOFlex Express 1,0 кефир</td>
+                <td>20</td>
+                <td>35</td>
+                <td>Неганицин</td>
+                <td>20</td>
+                <td>55</td>
+                <td>печень</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>St-YOGHORT TGV</td>
+                <td>20</td>
+                <td>36</td>
+                <td>Холодный крахмал</td>
+                <td>20</td>
+                <td>56</td>
+                <td>Ег (эланка) (кг)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>ST 071 U00500 творог</td>
+                <td>20</td>
+                <td>37</td>
+                <td>Ароматизатор базилик</td>
+                <td>20</td>
+                <td>57</td>
+                <td>Ег (ЭМЖ) (кг)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>MW 032 Q-U0050 творог</td>
+                <td>20</td>
+                <td>38</td>
+                <td>Ванилин</td>
+                <td>20</td>
+                <td>58</td>
+                <td>Шакар (кг)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>Yo Prob 753</td>
+                <td>20</td>
+                <td>39</td>
+                <td>Топлённое молоко</td>
+                <td>20</td>
+                <td>59</td>
+                <td>Шоки (кг)</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>XMT-1</td>
+                <td>20</td>
+                <td>40</td>
+                <td>Сит</td>
+                <td>20</td>
+                <td>60</td>
+                <td>Пахта бич (кг)</td>
+                <td>20</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Кнопка "Списать" -->
+<div class="write-off-button-container">
+    <button class="btn btn-write-off">
+        <i class="fas fa-trash"></i> Списать
+    </button>
+</div>
+
+<!-- Таблица со списаниями -->
+<div class="write-off-table-container">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Дата</th>
+                <th>Сырье</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>YOFlex Express 1,0 кефир, DT-DROX TTX6 кефир, Топлённое молоко, Ег (ЭМЖ) (кг) ...</td>
+            </tr>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>YOFlex Express 1,0 кефир, DT-DROX TTX6 кефир, Топлённое молоко, Ег (ЭМЖ) (кг) ...</td>
+            </tr>
+            <tr>
+                <td>92</td>
+                <td>15.10.2024</td>
+                <td>YOFlex Express 1,0 кефир, DT-DROX TTX6 кефир, Топлённое молоко, Ег (ЭМЖ) (кг) ...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Стили для таблицы инвентаризации с тремя колонками */
+    .inventory-table-container {
+        margin-bottom: 50px;  /* Было 30px, увеличиваем до 50px */
+    }
+    
+    .inventory-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .inventory-table th,
+    .inventory-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .inventory-table th:nth-child(3n),
+    .inventory-table td:nth-child(3n) {
+        border-right: 2px solid #ccc;
+    }
+    
+    .inventory-table th:last-child,
+    .inventory-table td:last-child {
+        border-right: none;
+    }
+    
+    .inventory-table thead {
+        background-color: #f5f7fa;
+    }
+    
+    .inventory-table th {
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .inventory-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+    
+    /* Стили для кнопки "Списать" */
+    .write-off-button-container {
+        text-align: right;
+        margin-bottom: 20px;
+    }
+    
+    .btn-write-off {
+        background-color: #6c757d;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .btn-write-off:hover {
+        background-color: #5a6268;
+    }
+    
+    /* Стили для таблицы списаний */
+    .write-off-table-container {
+        margin-top: 50px;  /* Было 30px, увеличиваем до 50px */
+        padding-top: 30px;
+        border-top: 1px dashed #e0e0e0;  /* Добавляем пунктирную линию как разделитель */
+    }
+    
+    .write-off-section-title {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #555;
+        font-weight: 500;
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 16px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .data-table th:last-child,
+    .data-table td:last-child {
+        border-right: none;
+    }
+    
+    .data-table thead {
+        background-color: #f5f7fa;
+    }
+    
+    .data-table th {
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .data-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Заглушка для кнопки "Списать"
+        const writeOffButton = document.querySelector('.btn-write-off');
+        if (writeOffButton) {
+            writeOffButton.addEventListener('click', function() {
+                alert('Функционал списания будет реализован в будущей версии.');
+            });
+        }
+    });
+</script>
+{% endblock %}

@@ -1,10 +1,507 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Главная | Volida{% endblock %}
+{% block title %}Главная | Финансовый дашборд | Volida{% endblock %}
 
-{% block page_title %}Главная{% endblock %}
+{% block page_title %}Финансовый дашборд{% endblock %}
 
 {% block content %}
-<!-- Пустая страница dashboard согласно требованию -->
+<div class="dashboard-container">
+    <!-- Верхний ряд карточек -->
+    <div class="cards-row">
+        <!-- Баланс -->
+        <div class="dashboard-card">
+            <h3 class="card-title">Баланс Volida</h3>
+            <div class="balance-amount">5 366 814 <span class="currency">сум</span></div>
+            <div class="balance-chart">
+                <div class="progress-bar">
+                    <div class="progress-segment progress-account" style="width: 81%"></div>
+                    <div class="progress-segment progress-cash" style="width: 19%"></div>
+                </div>
+                <div class="balance-legend">
+                    <div class="legend-item">
+                        <span class="legend-marker account-marker"></span>
+                        <span class="legend-text">На расчетном счету</span>
+                        <span class="legend-percentage">81%</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker cash-marker"></span>
+                        <span class="legend-text">Наличные средства</span>
+                        <span class="legend-percentage">20%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дебиторская сумма -->
+        <div class="dashboard-card">
+            <h3 class="card-title">Дебиторская сумма</h3>
+            <div class="amount debit-amount">
+                <span class="currency-icon debit-icon">$</span>
+                <span class="amount-value">5 366 814</span>
+                <span class="currency">сум</span>
+            </div>
+        </div>
+
+        <!-- Кредиторская сумма -->
+        <div class="dashboard-card">
+            <h3 class="card-title">Кредиторская сумма</h3>
+            <div class="amount credit-amount">
+                <span class="currency-icon credit-icon">$</span>
+                <span class="amount-value">5 366 814</span>
+                <span class="currency">сум</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Нижний ряд графиков -->
+    <div class="charts-row">
+        <!-- График оборота денег -->
+        <div class="dashboard-card chart-card">
+            <h3 class="card-title">График оборота денег и чистой прибыли</h3>
+            <div class="subtitle">Динамика оборота денег и чистой прибыли</div>
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <span class="legend-marker revenue-marker"></span>
+                    <span class="legend-text">Оборот денег</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-marker profit-marker"></span>
+                    <span class="legend-text">Прибыль</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Остатки на складе -->
+        <div class="dashboard-card chart-card">
+            <h3 class="card-title">Остатки на складе</h3>
+            <div class="stock-chart-container">
+                <div class="donut-chart-container">
+                    <canvas id="stockChart"></canvas>
+                    <div class="donut-center">
+                        <div class="donut-value">52</div>
+                        <div class="donut-label">млн</div>
+                    </div>
+                </div>
+                <div class="stock-details">
+                    <div class="stock-item">
+                        <span class="stock-color raw-color"></span>
+                        <span class="stock-name">Сырье</span>
+                        <span class="stock-value">13 млн сум</span>
+                        <span class="stock-percentage">80%</span>
+                    </div>
+                    <div class="stock-item">
+                        <span class="stock-color goods-color"></span>
+                        <span class="stock-name">Товар</span>
+                        <span class="stock-value">27 млн сум</span>
+                        <span class="stock-percentage">10%</span>
+                    </div>
+                    <div class="stock-item">
+                        <span class="stock-color products-color"></span>
+                        <span class="stock-name">Продукция</span>
+                        <span class="stock-value">58 млн сум</span>
+                        <span class="stock-percentage">10%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .cards-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .dashboard-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        padding: 20px;
+        flex: 1;
+        min-width: 280px;
+    }
+    
+    .card-title {
+        font-size: 16px;
+        color: #555;
+        margin: 0 0 15px 0;
+        font-weight: 500;
+    }
+    
+    .subtitle {
+        font-size: 13px;
+        color: #888;
+        margin: -10px 0 15px 0;
+    }
+    
+    .balance-amount {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    
+    .currency {
+        font-size: 16px;
+        color: #777;
+        font-weight: normal;
+    }
+    
+    .progress-bar {
+        height: 10px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        overflow: hidden;
+        display: flex;
+        margin-bottom: 15px;
+    }
+    
+    .progress-segment {
+        height: 100%;
+    }
+    
+    .progress-account {
+        background-color: #9c68ef;
+    }
+    
+    .progress-cash {
+        background-color: #42a5f5;
+    }
+    
+    .balance-legend {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: #666;
+    }
+    
+    .legend-marker {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        margin-right: 8px;
+    }
+    
+    .account-marker {
+        background-color: #9c68ef;
+    }
+    
+    .cash-marker {
+        background-color: #42a5f5;
+    }
+    
+    .revenue-marker {
+        background-color: #4caf50;
+    }
+    
+    .profit-marker {
+        background-color: #42a5f5;
+    }
+    
+    .legend-text {
+        flex-grow: 1;
+    }
+    
+    .legend-percentage {
+        color: #999;
+    }
+    
+    .amount {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        align-items: center;
+    }
+    
+    .currency-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        font-weight: normal;
+    }
+    
+    .debit-icon {
+        background-color: #ff5252;
+    }
+    
+    .credit-icon {
+        background-color: #4caf50;
+    }
+    
+    .charts-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .chart-card {
+        flex: 1;
+        min-width: 400px;
+    }
+    
+    .chart-container {
+        height: 300px;
+        margin-bottom: 15px;
+    }
+    
+    .chart-legend {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .stock-chart-container {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .donut-chart-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+    }
+    
+    .donut-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    
+    .donut-value {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .donut-label {
+        font-size: 14px;
+        color: #666;
+    }
+    
+    .stock-details {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .stock-item {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    }
+    
+    .stock-color {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        margin-right: 8px;
+    }
+    
+    .raw-color {
+        background-color: #9c68ef;
+    }
+    
+    .goods-color {
+        background-color: #42a5f5;
+    }
+    
+    .products-color {
+        background-color: #4caf50;
+    }
+    
+    .stock-name {
+        width: 100px;
+    }
+    
+    .stock-value {
+        flex-grow: 1;
+    }
+    
+    .stock-percentage {
+        width: 50px;
+        text-align: right;
+        color: #999;
+    }
+    
+    @media (max-width: 1200px) {
+        .chart-card {
+            min-width: 100%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .stock-chart-container {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stock-details {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // График оборота денег и прибыли
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        
+        // Данные для графика
+        const marchDays = Array.from({length: 16}, (_, i) => i + 16);
+        const aprilDays = Array.from({length: 14}, (_, i) => i + 1);
+        const labels = [...marchDays.map(day => `${day}`), ...aprilDays.map(day => `${day}`)];
+        
+        // Генерируем данные для графика
+        const generateData = (base, variance) => {
+            return labels.map(() => base + Math.random() * variance);
+        };
+        
+        const revenueData = generateData(3, 0.5);
+        const profitData = generateData(2, 0.5);
+        
+        // Создаем график
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Оборот денег',
+                    data: revenueData,
+                    borderColor: '#4caf50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: false
+                }, {
+                    label: 'Прибыль',
+                    data: profitData,
+                    borderColor: '#42a5f5',
+                    backgroundColor: 'rgba(66, 165, 245, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + 'M';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.raw.toFixed(1) + ' млн';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Добавляем метку с датой в середине графика
+        const markLine = {
+            id: 'markLine',
+            beforeDraw: (chart) => {
+                const { ctx, chartArea, scales } = chart;
+                const xPos = scales.x.getPixelForValue(16); // Примерно посередине
+                
+                // Рисуем вертикальную линию
+                ctx.save();
+                ctx.beginPath();
+                ctx.setLineDash([5, 5]);
+                ctx.moveTo(xPos, chartArea.top);
+                ctx.lineTo(xPos, chartArea.bottom);
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+                ctx.stroke();
+                
+                // Добавляем текст с датой
+                ctx.fillStyle = '#333';
+                ctx.textAlign = 'center';
+                ctx.fillText('21/03/2025', xPos, chartArea.top - 10);
+                ctx.restore();
+            }
+        };
+        
+        revenueChart.options.plugins.annotation = {
+            annotations: {
+                line: markLine
+            }
+        };
+        
+        // График остатков на складе (пончик)
+        const stockCtx = document.getElementById('stockChart').getContext('2d');
+        
+        const stockChart = new Chart(stockCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Сырье', 'Товар', 'Продукция'],
+                datasets: [{
+                    data: [80, 10, 10],
+                    backgroundColor: ['#9c68ef', '#42a5f5', '#4caf50'],
+                    borderWidth: 0,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '75%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}
